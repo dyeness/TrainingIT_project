@@ -875,3 +875,117 @@ body[data-theme="light"] input {
   display: inline-block;
   transition: transform 0.3s ease;
 }
+
+/* --- ІНДИКАТОР СКРОЛЛУ --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--burnt-orange), #ff9933);
+  z-index: 2001; /* Поверх хедера */
+  box-shadow: 0 0 10px var(--orange-glow);
+}
+
+/* --- КАСТОМНИЙ КУРСОР --- */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--burnt-orange);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--burnt-orange);
+  transition: all 0.15s ease-out; /* Робимо контур трохи "лінивим" */
+}
+
+/* Стан при наведенні на посилання/кнопки */
+.cursor-hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: var(--orange-glow);
+  border-color: transparent;
+}
+/* Приховуємо кастомний курсор на полях вводу */
+.cursor-hidden {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+}
+
+/* Повертаємо стандартний текстовий курсор для інпутів */
+input, textarea {
+  cursor: text !important;
+}
+
+/* Приховуємо стандартний курсор на десктопах */
+@media (min-width: 1024px) {
+  html, body { cursor: none; }
+  a, button, .btn, .tour-card, .weather-compact, .close-modal { cursor: none; }
+}
+/* Глобальне приховування системного курсору Windows */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* Переконайтеся, що навіть на інтерактивних елементах він не з'явиться */
+a, button, .btn, .tour-card, .weather-compact, .count-btn, .option-item, .close-modal, .close-weather, input, textarea {
+  cursor: none !important;
+}
+
+/* Стилі для нашого кастомного курсору (залишаються активними) */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none; /* Щоб курсор не заважав клікати по кнопках */
+  position: fixed;
+  opacity: 1;
+  visibility: visible;
+}
+/* Состояние курсора для чекбоксов */
+.cursor-checkbox {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important; /* Форма квадрата со скруглением */
+  border-color: var(--burnt-orange) !important;
+  background-color: rgba(255, 102, 0, 0.1) !important;
+}
+
+/* Скрываем точку внутри, когда наводим на чекбокс, для чистоты стиля */
+.cursor-dot.cursor-hidden-dot {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+/* Глобальне приховування для всього, крім інпутів */
+html, body {
+  cursor: none !important;
+}
+
+/* Виняток для полів вводу */
+input, textarea, select, button {
+  cursor: none; /* Але для інпутів ми повернемо системний через JS або CSS вище */
+}
+
+input:hover {
+  cursor: text !important;
+}
+
+
+
+/* Повертаємо курсор на мобільних пристроях */
+@media (max-width: 1023px) {
+  .cursor-dot, .cursor-outline { display: none; }
+  html, body { cursor: auto; }
+}
