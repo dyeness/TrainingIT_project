@@ -1019,3 +1019,48 @@ input:hover {
   position: relative;
   overflow: hidden;
 }
+
+/* Базовий контейнер для контенту */
+.usp-content-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 120px; /* Зафіксуйте висоту, щоб картка не міняла розмір */
+}
+
+.usp-main-text, .usp-hover-text {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+/* Початковий стан ховер-тексту */
+.usp-hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: blur(15px);
+  transform: scale(0.95);
+  pointer-events: none; /* Щоб не заважав клікам по основному тексту */
+}
+
+/* Ефект при наведенні на usp-item */
+.usp-item:hover .usp-main-text {
+  opacity: 0;
+  filter: blur(15px);
+  transform: scale(1.05);
+}
+
+.usp-item:hover .usp-hover-text {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Корекція usp-item для правильного позиціонування */
+.usp-item {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
