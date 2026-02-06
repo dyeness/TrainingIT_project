@@ -286,7 +286,19 @@ h2 { font-family: var(--font-heading); font-size: 56px; margin: 10px 0 40px 0; l
 .btn-outline { background: transparent; border: 1px solid var(--border); backdrop-filter: blur(10px); }
 .btn-outline:hover { background: var(--glass-heavy); border-color: var(--off-white); }
 
-.benefit-icon { width: 50px; height: 50px; background: var(--glass-heavy); border-radius: 12px; flex-shrink: 0; border: 1px solid var(--border); }
+.benefit-icon { 
+  width: 50px; 
+  height: 50px; 
+  /* Заменяем var(--glass-heavy) на наш фирменный оранжевый */
+  background: var(--burnt-orange); 
+  border-radius: 12px; 
+  flex-shrink: 0; 
+  border: 1px solid var(--border);
+  
+  /* Добавим легкое свечение, чтобы иконка "горела" как на макете */
+  box-shadow: 0 0 20px var(--orange-glow);
+}
+
 
 .reviews-container {
   position: relative;
@@ -450,7 +462,10 @@ body[data-theme="light"] {
 
 body[data-theme="light"] .sun-icon { display: block; }
 body[data-theme="light"] .moon-icon { display: none; }
-
+body[data-theme="light"] .benefit-icon {
+  background: var(--burnt-orange);
+  box-shadow: 0 10px 20px rgba(255, 102, 0, 0.2);
+}
 /* Корректировка анимации фона для светлой темы */
 body[data-theme="light"] .bg-animation {
   opacity: 0.4;
