@@ -481,7 +481,7 @@ input:focus { border-color: var(--burnt-orange); outline: none; background: rgba
 
 /* Переменные для темной темы (по умолчанию) */
 :root {
-  --navy-dark: #05070a;
+  --navy-dark: #121924;
   --off-white: #F5F5F5;
   --text-muted: rgba(245, 245, 245, 0.6);
   --border: rgba(255, 255, 255, 0.12);
