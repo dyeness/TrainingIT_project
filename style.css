@@ -24,24 +24,36 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
-/* Стили модального окна */
+/* Обновленные стили модального окна с анимацией */
 .modal {
-  display: none;
   position: fixed;
   z-index: 2000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  backdrop-filter: blur(10px);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Прозрачный в начале */
+  backdrop-filter: blur(0px); /* Без размытия в начале */
+  -webkit-backdrop-filter: blur(0px);
+  
+  display: flex; /* Всегда flex, но скрыт через visibility */
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  
+  visibility: hidden;
+  pointer-events: none;
+  transition: 
+    background-color 0.5s ease,
+    backdrop-filter 0.5s ease,
+    visibility 0.5s;
 }
 
 .modal.active {
-  display: flex;
-  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px); /* Плавное размытие фона */
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .modal-content-glass {
@@ -54,12 +66,18 @@ body {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  transform: translateY(50px);
-  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Эффект вылета: прозрачный и смещен вниз */
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: 
+    opacity 0.4s ease 0.1s, /* Небольшая задержка для контента */
+    transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .modal.active .modal-content-glass {
-  transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .close-modal {

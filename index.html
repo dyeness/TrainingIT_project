@@ -243,16 +243,17 @@
 </footer>
 
 <script>
-  // Инициализация переменных один раз
+  // Инициализация элементов
   const themeToggle = document.getElementById('theme-toggle');
   const body = document.body;
   const bgHoverLayer = document.querySelector('.bg-hover');
   const tourCards = document.querySelectorAll('.tour-card');
   const modal = document.getElementById('tour-modal');
-const closeModal = document.querySelector('.close-modal');
-const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
+  const closeModal = document.querySelector('.close-modal');
+  const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
 
   // --- ЛОГИКА ТЕМЫ ---
+  // Проверка сохраненной темы при загрузке
   if (localStorage.getItem('theme') === 'light') {
     body.setAttribute('data-theme', 'light');
   }
@@ -270,7 +271,7 @@ const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
   // --- ЛОГИКА ИЗМЕНЕНИЯ ФОНА (ХОВЕР) ---
   tourCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
-      const imgPath = card.getAttribute('data-bg'); // Получаем путь из атрибута data-bg
+      const imgPath = card.getAttribute('data-bg');
       if (imgPath) {
         bgHoverLayer.style.backgroundImage = `url('${imgPath}')`;
         bgHoverLayer.style.opacity = '1';
@@ -282,34 +283,51 @@ const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
     });
   });
 
-  detailButtons.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const card = btn.closest('.tour-card');
-    const title = card.querySelector('h3').innerText;
-    const desc = card.querySelector('p').innerText;
-
-    document.getElementById('modal-title').innerText = title;
-    document.getElementById('modal-desc').innerText = desc + " Додатковий опис вашої подорожі, який включає повний таймлайн та деталі маршруту.";
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Запрет прокрутки фона
-  });
-});
-
-closeModal.addEventListener('click', () => {
-  modal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-});
-
-// Закрытие при клике вне окна
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
+  // --- ЛОГИКА МОДАЛЬНОГО ОКНА (DETAILS) ---
+  
+  // Функция закрытия (вынесена для повторного использования)
+  const closeTourModal = () => {
     modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-});
-</script>
+    document.body.style.overflow = 'auto'; // Возвращаем прокрутку страницы
+  };
 
+  detailButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Поиск данных внутри карточки, к которой относится кнопка
+      const card = btn.closest('.tour-card');
+      const title = card.querySelector('h3').innerText;
+      const desc = card.querySelector('p').innerText;
+
+      // Заполнение модального окна контентом
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-desc').innerText = desc + 
+        " Відкрийте для себе красу Карпат з нашою ексклюзивною програмою. " +
+        "На вас чекають професійні гіди, комфортне проживання та незабутні краєвиди.";
+      
+      // Активация окна (плавность обеспечивается CSS переходом)
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Запрет прокрутки основного контента
+    });
+  });
+
+  // Обработчик кнопки закрытия
+  closeModal.addEventListener('click', closeTourModal);
+
+  // Закрытие при клике на затемненную область (оверлей)
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeTourModal();
+    }
+  });
+
+  // Закрытие клавишей Esc для удобства
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeTourModal();
+    }
+  });
+</script>
 </body>
 </html>
