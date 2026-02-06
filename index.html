@@ -17,41 +17,66 @@
       <span class="label">Детальна програма</span>
       <h2 id="modal-title">Назва туру</h2>
       <p id="modal-desc" style="margin-bottom: 40px; color: var(--text-muted);"></p>
+<div class="calculator-box">
+  <div class="calc-row">
+    <div class="calc-group">
+      <label>Кількість осіб</label>
+      <div class="counter">
+        <button type="button" class="count-btn minus">—</button>
+        <input type="number" id="people-count" value="1" min="1" max="10" readonly>
+        <button type="button" class="count-btn plus">+</button>
+      </div>
+    </div>
 
-      <div class="pricing-grid">
-        <div class="price-card">
-          <h4>Standard</h4>
-          <div class="price-value">4 500 ₴</div>
-          <ul>
-            <li>Проживання у хостелі</li>
-            <li>Груповий трансфер</li>
-            <li>Базове страхування</li>
-          </ul>
-          <a href="#tours" class="btn btn-outline" style="width: 100%;">Обрати</a>
+<div class="calc-group">
+      <label>Додаткові послуги</label>
+      <div class="options">
+        <label class="option-item">
+          <input type="checkbox" class="addon-check" data-price="800">
+          <span class="checkmark"></span>
+          <span>Прокат спорядження (+800 ₴)</span>
+        </label>
+        <label class="option-item">
+          <input type="checkbox" class="addon-check" data-price="400">
+          <span class="checkmark"></span>
+          <span>Розширене страхування (+400 ₴)</span>
+        </label>
         </div>
+      </div>
+    </div>
+  </div>
+
+<div class="pricing-grid" id="modal-pricing">
+    <div class="price-card" data-base="4500">
+      <h4>Standard</h4>
+      <div class="price-value"><span>4 500</span> ₴</div>
+      <ul>
+        <li>Проживання у хостелі</li>
+        <li>Груповий трансфер</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline close-modal-btn" style="width: 100%;">Обрати</a>
+    </div>
         
-        <div class="price-card featured">
-          <div class="tour-badge">Popular</div>
-          <h4>Comfort</h4>
-          <div class="price-value">8 200 ₴</div>
-          <ul>
-            <li>Еко-шале (2 особи)</li>
-            <li>Сніданки та вечері</li>
-            <li>Приватний гід</li>
-          </ul>
-          <a href="#tours" class="btn" style="width: 100%;">Обрати</a>
-        </div>
+<div class="price-card featured" data-base="8200">
+      <div class="tour-badge">Popular</div>
+      <h4>Comfort</h4>
+      <div class="price-value"><span>8 200</span> ₴</div>
+      <ul>
+        <li>Еко-шале (2 особи)</li>
+        <li>Сніданки та вечері</li>
+      </ul>
+      <a href="#contact" class="btn close-modal-btn" style="width: 100%;">Обрати</a>
+    </div>
 
-        <div class="price-card">
-          <h4>Premium</h4>
-          <div class="price-value">15 000 ₴</div>
-          <ul>
-            <li>VIP-шале</li>
-            <li>Full Board + Дегустації</li>
-            <li>Власний фотограф</li>
-          </ul>
-          <a href="#tours" class="btn btn-outline" style="width: 100%;">Обрати</a>
-        </div>
+<div class="price-card" data-base="15000">
+      <h4>Premium</h4>
+      <div class="price-value"><span>15 000</span> ₴</div>
+      <ul>
+        <li>VIP-шале</li>
+        <li>Full Board + Дегустації</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline close-modal-btn" style="width: 100%;">Обрати</a>
+    </div>
       </div>
     </div>
   </div>
@@ -439,6 +464,59 @@
       document.body.style.overflow = 'auto';
     }
   });
+  // --- ЛОГИКА КАЛЬКУЛЯТОРА ---
+const peopleInput = document.getElementById('people-count');
+const plusBtn = document.querySelector('.count-btn.plus');
+const minusBtn = document.querySelector('.count-btn.minus');
+const addons = document.querySelectorAll('.addon-check');
+const priceCards = document.querySelectorAll('.price-card');
+
+function updatePrices() {
+  const count = parseInt(peopleInput.value);
+  let addonTotal = 0;
+  
+  addons.forEach(ad => {
+    if(ad.checked) addonTotal += parseInt(ad.dataset.price);
+  });
+
+  priceCards.forEach(card => {
+    const base = parseInt(card.dataset.base);
+    const finalPrice = (base * count) + (addonTotal * count);
+    
+    // Красивое форматирование числа
+    const priceDisplay = card.querySelector('.price-value span');
+    priceDisplay.innerText = finalPrice.toLocaleString('ru-RU');
+    
+    // Микро-анимация при изменении
+    priceDisplay.style.transform = 'scale(1.1)';
+    setTimeout(() => priceDisplay.style.transform = 'scale(1)', 100);
+  });
+}
+
+plusBtn.addEventListener('click', () => {
+  if(peopleInput.value < 10) {
+    peopleInput.value = parseInt(peopleInput.value) + 1;
+    updatePrices();
+  }
+});
+
+minusBtn.addEventListener('click', () => {
+  if(peopleInput.value > 1) {
+    peopleInput.value = parseInt(peopleInput.value) - 1;
+    updatePrices();
+  }
+});
+
+addons.forEach(ad => ad.addEventListener('change', updatePrices));
+
+// Сброс калькулятора при открытии нового тура
+detailButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    peopleInput.value = 1;
+    addons.forEach(ad => ad.checked = false);
+    updatePrices();
+  });
+});
 </script>
 </body>
 </html>
