@@ -197,6 +197,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  /* Это не даст горам вылезать за границы хедера */
+  overflow: visible;
 }
 
 .header-content {
@@ -206,6 +208,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10; /* Контент всегда поверх гор */
 }
 
 .logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; letter-spacing: 1px; }
@@ -1078,4 +1081,52 @@ input:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.header-scroll-container {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none; /* Чтобы нельзя было случайно кликнуть по горе вместо меню */
+  z-index: 1; /* Опускаем ниже текста (у хедера обычно z-index 1000) */
+}
+
+/* Статичный фоновый контур */
+.mountain-background {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1; /* Очень прозрачный */
+}
+
+/* Активный рисующийся контур */
+.mountain-active-svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* Делаем активную линию полупрозрачной */
+  opacity: 0.0; 
+}
+
+/* Оранжевая полоска снизу */
+.scroll-progress-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--burnt-orange);
+  box-shadow: 0 0 15px var(--orange-glow);
+  z-index: 3;
+  opacity: 1; /* Полоска полностью непрозрачна */
+}
+/* Убедимся, что контент хедера (лого и меню) выше гор */
+
+#mountain-path {
+  filter: drop-shadow(0 0 3px var(--orange-glow));
+  transition: stroke-dashoffset 0.1s ease-out;
 }

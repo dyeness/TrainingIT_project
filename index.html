@@ -90,6 +90,20 @@
   <div class="bg-animation"></div>
 
   <header>
+<div class="header-scroll-container">
+    <svg class="mountain-background" viewBox="0 0 1440 60" preserveAspectRatio="none">
+       <path d="M0 58 L120 42 L250 58 L400 20 L550 48 L750 10 L950 45 L1150 22 L1320 55 L1440 38" 
+             fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </svg>
+
+    <svg class="mountain-active-svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path id="mountain-path" 
+            d="M0 58 L120 42 L250 58 L400 20 L550 48 L750 10 L950 45 L1150 22 L1320 55 L1440 38" 
+            fill="none" stroke="var(--burnt-orange)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    
+    <div class="scroll-progress-line"></div>
+  </div>
     <div class="header-content">
       <div class="logo">GO WEST<span> UA</span></div>
       <nav>
@@ -694,6 +708,29 @@ window.addEventListener("scroll", () => {
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
   progressBar.style.width = scrolled + "%";
+});
+// --- СИНХРОНІЗАЦІЯ ПОЛОСКИ ТА ГІР ---
+
+const mountainPath = document.getElementById('mountain-path');
+
+// Ініціалізація довжини шляху
+const pathLength = mountainPath.getTotalLength();
+mountainPath.style.strokeDasharray = pathLength;
+mountainPath.style.strokeDashoffset = pathLength;
+
+window.addEventListener("scroll", () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = winScroll / height; // Значення від 0 до 1
+
+  // 1. Оновлюємо полоску (ширина у відсотках)
+  if (progressBar) {
+    progressBar.style.width = (scrolled * 100) + "%";
+  }
+
+  // 2. Оновлюємо гори (малювання лінії)
+  const drawLength = pathLength * scrolled;
+  mountainPath.style.strokeDashoffset = pathLength - drawLength;
 });
 </script>
 </body>
