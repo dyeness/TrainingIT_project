@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--navy-dark);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header {
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(25px);
+  background: rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  overflow: visible;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--burnt-orange);
+}
+
+nav a {
+  color: var(--off-white);
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--burnt-orange);
+  text-shadow: 0 0 10px var(--orange-glow);
+}
+
+section {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.label {
+  color: var(--burnt-orange);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  display: block;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  margin: 10px 0 40px 0;
+  line-height: 1.1;
+}
+
+#tours .label,
+#benefits .label {
+  text-align: center;
+  display: block;
+}
+
+#tours h2,
+#benefits h2 {
+  text-align: center;
+}

@@ -1,0 +1,146 @@
+/* ===== BACKGROUND AMBIENT ANIMATION ===== */
+
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(0, 35, 102, 0.5), transparent 40%),
+    radial-gradient(circle at 90% 90%, var(--orange-glow), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(26, 28, 34, 0.8), transparent 80%);
+  filter: blur(100px);
+  animation: ambientMove 25s ease-in-out infinite alternate;
+}
+
+@keyframes ambientMove {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.2) translate(5%, 5%);
+  }
+}
+
+/* ===== HOVER BACKGROUND IMAGE ===== */
+
+.bg-hover {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  filter: blur(45px) brightness(0.45);
+  transform: scale(1.15);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--burnt-orange),
+    #ff9933
+  );
+  z-index: 2001;
+  box-shadow: 0 0 10px var(--orange-glow);
+}
+
+/* ===== HEADER MOUNTAIN SCROLL ===== */
+
+.header-scroll-container {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mountain-background {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
+
+.mountain-active-svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+}
+
+.scroll-progress-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--burnt-orange);
+  box-shadow: 0 0 15px var(--orange-glow);
+  z-index: 3;
+  opacity: 1;
+}
+
+#mountain-path {
+  filter: drop-shadow(0 0 3px var(--orange-glow));
+  transition: stroke-dashoffset 0.1s ease-out;
+}
+
+/* ===== MAP PULSE ANIMATIONS ===== */
+
+@keyframes pulsePoint {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes pointFloat {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes mapPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* ===== PRICE NUMBER ANIMATION ===== */
+
+.price-value span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}

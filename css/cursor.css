@@ -1,0 +1,116 @@
+/* ===== CUSTOM CURSOR BASE ===== */
+
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* DOT */
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--burnt-orange);
+}
+
+/* OUTLINE */
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--burnt-orange);
+  transition: all 0.15s ease-out;
+}
+
+/* ===== HOVER STATES ===== */
+
+.cursor-hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: var(--orange-glow);
+  border-color: transparent;
+}
+
+/* HIDE CURSOR (INPUTS) */
+
+.cursor-hidden {
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+}
+
+/* ===== CHECKBOX STATE ===== */
+
+.cursor-checkbox {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important;
+  border-color: var(--burnt-orange) !important;
+  background-color: rgba(255, 102, 0, 0.1) !important;
+}
+
+.cursor-dot.cursor-hidden-dot {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+
+
+
+/* ===== SYSTEM CURSOR OVERRIDES ===== */
+
+/* Desktop: hide system cursor */
+@media (min-width: 1024px) {
+  html,
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  .btn,
+  .tour-card,
+  .weather-compact,
+  .count-btn,
+  .option-item,
+  .close-modal,
+  .close-weather {
+    cursor: none;
+  }
+}
+
+/* Global hard-hide (Windows fix) */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
+/* Inputs keep text caret */
+input,
+textarea {
+  cursor: text !important;
+}
+
+/* Extra safety */
+input:hover {
+  cursor: text !important;
+}
+
+/* Mobile: restore system cursor */
+@media (max-width: 1023px) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+
+  html,
+  body {
+    cursor: auto;
+  }
+}

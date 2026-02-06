@@ -1,0 +1,91 @@
+.calculator-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.calc-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-group label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--burnt-orange);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.count-btn {
+  width: 45px;
+  height: 45px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
+
+#people-count {
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  display: inline-block;
+}
+
+
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addon-check {
+  display: none;
+}
+
+.addon-check:checked + .checkmark {
+  background: var(--burnt-orange);
+}

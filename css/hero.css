@@ -1,0 +1,113 @@
+/* ===== HERO BASE ===== */
+
+.hero {
+  text-align: center;
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 88px;
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 35px auto;
+  font-size: 20px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* ===== HERO PARALLAX BACKGROUND ===== */
+
+.hero-parallax-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.3) 5%,
+    black 20%,
+    black 80%,
+    rgba(0,0,0,0.3) 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0,0,0,0.3) 10%,
+    black 25%,
+    black 75%,
+    rgba(0,0,0,0.3) 90%,
+    transparent 100%
+  );
+}
+
+.hero-parallax-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  mask-image: radial-gradient(circle, transparent 50%, black 100%);
+  -webkit-mask-image: radial-gradient(circle, transparent 50%, black 100%);
+}
+
+/* ===== HERO OVERLAY ===== */
+
+.hero .parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--navy-dark) 0%,
+    rgba(5, 7, 10, 0.8) 10%,
+    transparent 30%,
+    transparent 70%,
+    rgba(5, 7, 10, 0.8) 90%,
+    var(--navy-dark) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===== MOUNTAINS SVG ===== */
+
+.hero-mountains-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  filter: none !important;
+}
+
+.hero-mountains-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1000px) {
+  .hero h1 {
+    font-size: 46px;
+  }
+}
