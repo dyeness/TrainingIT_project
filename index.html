@@ -10,6 +10,52 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="tour-modal" class="modal">
+  <div class="modal-content-glass">
+    <span class="close-modal">&times;</span>
+    <div id="modal-body">
+      <span class="label">Детальна програма</span>
+      <h2 id="modal-title">Назва туру</h2>
+      <p id="modal-desc" style="margin-bottom: 40px; color: var(--text-muted);"></p>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h4>Standard</h4>
+          <div class="price-value">4 500 ₴</div>
+          <ul>
+            <li>Проживання у хостелі</li>
+            <li>Груповий трансфер</li>
+            <li>Базове страхування</li>
+          </ul>
+          <a href="#" class="btn btn-outline" style="width: 100%;">Обрати</a>
+        </div>
+        
+        <div class="price-card featured">
+          <div class="tour-badge">Popular</div>
+          <h4>Comfort</h4>
+          <div class="price-value">8 200 ₴</div>
+          <ul>
+            <li>Еко-шале (2 особи)</li>
+            <li>Сніданки та вечері</li>
+            <li>Приватний гід</li>
+          </ul>
+          <a href="#" class="btn" style="width: 100%;">Обрати</a>
+        </div>
+
+        <div class="price-card">
+          <h4>Premium</h4>
+          <div class="price-value">15 000 ₴</div>
+          <ul>
+            <li>VIP-шале</li>
+            <li>Full Board + Дегустації</li>
+            <li>Власний фотограф</li>
+          </ul>
+          <a href="#" class="btn btn-outline" style="width: 100%;">Обрати</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <div class="bg-hover"></div>
   <div class="bg-animation"></div>
@@ -202,6 +248,9 @@
   const body = document.body;
   const bgHoverLayer = document.querySelector('.bg-hover');
   const tourCards = document.querySelectorAll('.tour-card');
+  const modal = document.getElementById('tour-modal');
+const closeModal = document.querySelector('.close-modal');
+const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
 
   // --- ЛОГИКА ТЕМЫ ---
   if (localStorage.getItem('theme') === 'light') {
@@ -232,6 +281,34 @@
       bgHoverLayer.style.opacity = '0';
     });
   });
+
+  detailButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const card = btn.closest('.tour-card');
+    const title = card.querySelector('h3').innerText;
+    const desc = card.querySelector('p').innerText;
+
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-desc').innerText = desc + " Додатковий опис вашої подорожі, який включає повний таймлайн та деталі маршруту.";
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Запрет прокрутки фона
+  });
+});
+
+closeModal.addEventListener('click', () => {
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+});
+
+// Закрытие при клике вне окна
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+});
 </script>
 
 </body>
