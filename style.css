@@ -317,6 +317,20 @@ h2 { font-family: var(--font-heading); font-size: 56px; margin: 10px 0 40px 0; l
   padding: 40px 10%;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  cursor: grab;
+  /* Убираем стандартное сглаживание, чтобы JS управлял процессом на 100% */
+  scroll-behavior: auto !important; 
+  -webkit-overflow-scrolling: touch;
+}
+
+.reviews-scroll:active {
+  cursor: grabbing; /* Курсор "сжатый кулак" при нажатии */
+}
+
+/* Состояние при активном свайпе */
+.reviews-scroll.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none !important; /* Убираем примагничивание */
 }
 
 .reviews-scroll::-webkit-scrollbar { display: none; }
@@ -1062,17 +1076,35 @@ input:hover {
 }
 
 /* Ефект при наведенні на usp-item */
-.usp-item:hover .usp-main-text {
+.usp-item:hover .usp-main-text,
+.review-card:hover .usp-main-text {
   opacity: 0;
   filter: blur(15px);
   transform: scale(1.05);
 }
 
-.usp-item:hover .usp-hover-text {
+.usp-item:hover .usp-hover-text, .review-card:hover .usp-hover-text {
   opacity: 1;
   filter: blur(0px);
   transform: scale(1);
   pointer-events: auto;
+}
+.rating-stars {
+  font-size: 30px;
+  color: #FFD700; /* Золотий */
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.review-stars-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 /* Корекція usp-item для правильного позиціонування */
@@ -1130,3 +1162,4 @@ input:hover {
   filter: drop-shadow(0 0 3px var(--orange-glow));
   transition: stroke-dashoffset 0.1s ease-out;
 }
+
