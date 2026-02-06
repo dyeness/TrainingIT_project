@@ -289,17 +289,26 @@ h2 { font-family: var(--font-heading); font-size: 56px; margin: 10px 0 40px 0; l
 .btn-outline { background: transparent; border: 1px solid var(--border); backdrop-filter: blur(10px); }
 .btn-outline:hover { background: var(--glass-heavy); border-color: var(--off-white); }
 
-.benefit-icon { 
-  width: 50px; 
-  height: 50px; 
-  /* Заменяем var(--glass-heavy) на наш фирменный оранжевый */
-  background: var(--burnt-orange); 
-  border-radius: 12px; 
-  flex-shrink: 0; 
+.benefit-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--burnt-orange);
+  border-radius: 12px;
+  flex-shrink: 0;
   border: 1px solid var(--border);
-  
-  /* Добавим легкое свечение, чтобы иконка "горела" как на макете */
   box-shadow: 0 0 20px var(--orange-glow);
+  
+  /* Центрирование SVG */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 25px; /* Отступ от заголовка */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.benefit-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 
