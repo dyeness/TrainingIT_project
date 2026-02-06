@@ -224,7 +224,47 @@ h2 { font-family: var(--font-heading); font-size: 56px; margin: 10px 0 40px 0; l
 .hero { text-align: center; padding: 140px 0; }
 .hero h1 { font-family: var(--font-heading); font-size: 88px; margin: 0; line-height: 1.05; letter-spacing: -3px; }
 .hero p { max-width: 650px; margin: 35px auto; font-size: 20px; color: var(--text-muted); font-weight: 300; }
+.hero {
+  background: linear-gradient(rgba(5, 7, 10, 0.7), rgba(5, 7, 10, 0.7)), 
+              url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: transparent; /* Убираем стандартный фон */
+}
+.hero-parallax-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
+  /* Сложная маска для мягкости по бокам */
+  mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    rgba(0,0,0,0.3) 5%, 
+    black 20%, 
+    black 80%, 
+    rgba(0,0,0,0.3) 95%, 
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    rgba(0,0,0,0.3) 10%, 
+    black 25%, 
+    black 75%, 
+    rgba(0,0,0,0.3) 90%, 
+    transparent 100%
+  );
+}
 .usp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 80px; }
 .usp-item { 
   background: var(--glass-bg); 
@@ -1041,6 +1081,38 @@ input:hover {
   /* Убираем прозрачность контейнера, регулируем её прямо в цвете stroke */
   opacity: 1; 
 }
+.hero .parallax-overlay {
+  position: absolute;
+  inset: 0;
+  /* Многослойное растворение сверху и снизу (имитация тумана) */
+  background: linear-gradient(
+    to bottom, 
+    var(--navy-dark) 0%, 
+    rgba(5, 7, 10, 0.8) 10%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(5, 7, 10, 0.8) 90%, 
+    var(--navy-dark) 100%
+  );
+  pointer-events: none;
+}
+.hero-parallax-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Размываем только края фото */
+  backdrop-filter: blur(4px);
+  mask-image: radial-gradient(
+    circle, 
+    transparent 50%, 
+    black 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle, 
+    transparent 50%, 
+    black 100%
+  );
+}
 
 .hero-mountains-svg svg {
   width: 100%;
@@ -1172,3 +1244,45 @@ input:hover {
   transition: stroke-dashoffset 0.1s ease-out;
 }
 
+.parallax-window {
+  height: 600px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: 100px 0;
+  width: 100%;
+  
+  /* Создаем прозрачность по краям слева и справа */
+mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    rgba(0,0,0,0.2) 2%, 
+    black 8%,    /* Раньше было 20%, теперь фото проявляется намного раньше */
+    black 92%,   /* Раньше было 80%, теперь фото остается четким дольше */
+    rgba(0,0,0,0.2) 98%, 
+    transparent 100%
+  );
+-webkit-mask-image: linear-gradient(
+    to right, 
+    transparent 0%, 
+    rgba(0,0,0,0.2) 2%, 
+    black 8%, 
+    black 92%, 
+    rgba(0,0,0,0.2) 98%, 
+    transparent 100%
+  );
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  /* Плавное растворение сверху и снизу в цвет фона сайта */
+  background: linear-gradient(to bottom, 
+    var(--navy-dark) 0%, 
+    transparent 20%, 
+    transparent 80%, 
+    var(--navy-dark) 100%
+  );
+}
