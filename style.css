@@ -456,7 +456,7 @@ body[data-theme="light"] input {
   background: var(--glass-bg);
   border: 1px solid var(--border);
   border-radius: 50px;
-  padding: 5px 12px;
+  padding: 5px 16px; /* Чуть увеличим боковые отступы */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -464,7 +464,11 @@ body[data-theme="light"] input {
   transition: all 0.3s ease;
   font-weight: 600;
   font-size: 14px;
-  margin-left: 20px;
+  
+  /* УДАЛИТЕ width: 7% и margin-left: 20px */
+  width: fit-content; /* Ширина по контенту */
+  justify-self: center; /* Центрирование внутри колонки grid */
+  
   backdrop-filter: blur(10px);
 }
 
