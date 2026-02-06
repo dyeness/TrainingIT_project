@@ -114,6 +114,73 @@
         <a href="#tours" class="btn" style="background: white; color: black; min-width: 200px;">Забронювати</a>
       </div>
 
+          <div id="weather-widget" class="weather-btn">
+<div id="weather-trigger" class="weather-compact">
+  <span id="weather-icon-mini">🏔️</span>
+  <span id="weather-temp-mini">--°</span>
+</div>
+
+<div id="weather-modal" class="modal">
+  <div class="modal-content-glass weather-details">
+    <span class="close-weather" style="position: absolute; top: 20px; right: 30px; cursor: pointer; font-size: 30px;">&times;</span>
+    <span class="label">Погода в горах</span>
+    <h2 style="margin-bottom: 30px;">Локації Go West</h2>
+    
+    <div class="weather-grid">
+      <div class="weather-card-item">
+        <div class="city">Яремче</div>
+        <div class="temp" id="temp-yaremche">--°</div>
+        <div class="status">Центральна база</div>
+      </div>
+      <div class="weather-card-item">
+        <div class="city">Буковель</div>
+        <div class="temp" id="temp-bukovel">--°</div>
+        <div class="status">Гірськолижний курорт</div>
+      </div>
+      <div class="weather-card-item">
+        <div class="city">Драгобрат</div>
+        <div class="temp" id="temp-dragobrat">--°</div>
+        <div class="status">Найвища точка</div>
+      </div>
+    </div>
+
+<div class="map-placeholder">
+  <svg class="map-svg-asset" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(255,102,0,0.15); stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgba(0,0,0,0); stop-opacity:0" />
+      </linearGradient>
+    </defs>
+    
+    <path d="M0 250 Q 50 220 100 240 T 200 210 T 300 250 T 450 180 T 600 230 T 800 200 V 300 H 0 Z" fill="rgba(255,255,255,0.03)" />
+    
+    <path d="M0 280 L 40 260 L 80 275 L 120 230 L 160 250 L 220 190 L 280 230 L 340 180 L 400 210 L 460 140 L 520 200 L 580 160 L 640 210 L 700 170 L 760 220 L 800 190 V 300 H 0 Z" 
+          fill="url(#mountainGrad)" 
+          stroke="rgba(255,102,0,0.4)" 
+          stroke-width="1.5" 
+          stroke-linejoin="round"/>
+          
+    <path d="M220 190 L 250 215 L 280 230 M460 140 L 490 170 L 520 200" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" />
+  </svg>
+  
+  <div class="map-point" style="top: 55%; left: 22%;">
+    <span class="pulse-dot"></span>
+    <label>Яремче</label>
+  </div>
+  <div class="map-point" style="top: 72%; left: 42%;">
+    <span class="pulse-dot"></span>
+    <label>Буковель</label>
+  </div>
+  <div class="map-point" style="top: 42%; left: 68%;">
+    <span class="pulse-dot"></span>
+    <label>Драгобрат</label>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+
       <h2>Каталог турів</h2>
       <div class="tour-grid">
         <div class="tour-card" data-bg="img/2.jpg">
@@ -248,12 +315,18 @@
   const body = document.body;
   const bgHoverLayer = document.querySelector('.bg-hover');
   const tourCards = document.querySelectorAll('.tour-card');
+  
+  // Элементы модального окна туров
   const modal = document.getElementById('tour-modal');
   const closeModal = document.querySelector('.close-modal');
   const detailButtons = document.querySelectorAll('.tour-card .btn-outline');
 
+  // Элементы погоды
+  const weatherTrigger = document.getElementById('weather-trigger');
+  const weatherModal = document.getElementById('weather-modal');
+  const closeWeather = document.querySelector('.close-weather');
+
   // --- ЛОГИКА ТЕМЫ ---
-  // Проверка сохраненной темы при загрузке
   if (localStorage.getItem('theme') === 'light') {
     body.setAttribute('data-theme', 'light');
   }
@@ -277,55 +350,93 @@
         bgHoverLayer.style.opacity = '1';
       }
     });
-
     card.addEventListener('mouseleave', () => {
       bgHoverLayer.style.opacity = '0';
     });
   });
 
   // --- ЛОГИКА МОДАЛЬНОГО ОКНА (DETAILS) ---
-  
-  // Функция закрытия (вынесена для повторного использования)
   const closeTourModal = () => {
     modal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Возвращаем прокрутку страницы
+    document.body.style.overflow = 'auto';
   };
 
   detailButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      
-      // Поиск данных внутри карточки, к которой относится кнопка
       const card = btn.closest('.tour-card');
       const title = card.querySelector('h3').innerText;
       const desc = card.querySelector('p').innerText;
 
-      // Заполнение модального окна контентом
       document.getElementById('modal-title').innerText = title;
       document.getElementById('modal-desc').innerText = desc + 
-        " Відкрийте для себе красу Карпат з нашою ексклюзивною програмою. " +
-        "На вас чекають професійні гіди, комфортне проживання та незабутні краєвиди.";
+        " Відкрийте для себе красу Карпат з нашою ексклюзивною програмою.";
       
-      // Активация окна (плавность обеспечивается CSS переходом)
       modal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Запрет прокрутки основного контента
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // Обработчик кнопки закрытия
   closeModal.addEventListener('click', closeTourModal);
 
-  // Закрытие при клике на затемненную область (оверлей)
+  // --- ЛОГИКА ПОГОДЫ ---
+  const API_KEY = "d72601e4f878a70b9b6b106e17ff9c50"; // Замените на реальный ключ при наличии
+
+  async function fetchWeather(city, elementId) {
+    const el = document.getElementById(elementId);
+    try {
+      // Пытаемся получить реальные данные
+      const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`);
+      if (!resp.ok) throw new Error("No API Key");
+      const data = await resp.json();
+      const temp = Math.round(data.main.temp);
+      el.innerText = (temp > 0 ? '+' : '') + temp + '°';
+      if(elementId === 'weather-temp-mini') document.getElementById('weather-temp-mini').innerText = temp + '°';
+    } catch (e) {
+      // ДЕМО-РЕЖИМ: если API недоступно, ставим красивые заглушки
+      const demoTemps = { 
+        'temp-yaremche': 8, 
+        'temp-bukovel': 4, 
+        'temp-dragobrat': -2,
+        'weather-temp-mini': 8
+      };
+      el.innerText = (demoTemps[elementId] > 0 ? '+' : '') + demoTemps[elementId] + '°';
+    }
+  }
+
+  // Инициализация мини-виджета при загрузке
+  fetchWeather("Yaremche", "weather-temp-mini");
+
+  // Открытие окна погоды
+  weatherTrigger.addEventListener('click', () => {
+    weatherModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    fetchWeather("Yaremche", "temp-yaremche");
+    fetchWeather("Polyanitsa", "temp-bukovel");
+    fetchWeather("Yasinia", "temp-dragobrat");
+  });
+
+  // Закрытие окна погоды
+  closeWeather.addEventListener('click', () => {
+    weatherModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+
+  // --- ОБЩИЕ ОБРАБОТЧИКИ (ЗАКРЫТИЕ) ---
   window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeTourModal();
+    if (e.target === modal) closeTourModal();
+    if (e.target === weatherModal) {
+      weatherModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
     }
   });
 
-  // Закрытие клавишей Esc для удобства
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (e.key === 'Escape') {
       closeTourModal();
+      weatherModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
     }
   });
 </script>
