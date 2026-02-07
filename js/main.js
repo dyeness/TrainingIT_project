@@ -5,6 +5,8 @@ import { initWeather } from "./weather.js";
 import { initCursor } from "./cursor.js";
 import { initScrollProgress } from "./scroll-progress.js";
 import { initReviewsSlider } from "./slider.js";
+import { initPromoTimer } from "./timer.js";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
@@ -14,4 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCursor();
   initScrollProgress();
   initReviewsSlider();
+  initPromoTimer();
 });

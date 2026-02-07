@@ -34,7 +34,7 @@
   "promo": {
     "title": "Mountain weekend",
     "text": "Book now and get -20%.",
-    "days": "DAYS",
+    "seconds": "SEC",
     "hours": "HRS",
     "minutes": "MIN"
   },

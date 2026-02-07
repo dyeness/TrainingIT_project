@@ -227,11 +227,21 @@
           <h2 data-i18n="promo.title">Weekend у горах</h2>
           <p data-i18n="promo.text">Забронюйте зараз та отримайте -20%.</p>
         </div>
-        <div class="timer">
-          <div class="timer-item"><span>02</span><label data-i18n="promo.days">ДНІ</label></div>
-          <div class="timer-item"><span>18</span><label data-i18n="promo.hours">ГОД</label></div>
-          <div class="timer-item"><span>45</span><label data-i18n="promo.minutes">ХВ</label></div>
-        </div>
+        <div class="timer" id="promo-timer">
+  <div class="timer-item">
+    <span id="timer-hours">00</span>
+    <label data-i18n="promo.hours">ГОД</label>
+  </div>
+  <div class="timer-item">
+    <span id="timer-minutes">00</span>
+    <label data-i18n="promo.minutes">ХВ</label>
+  </div>
+  <div class="timer-item">
+    <span id="timer-seconds">00</span>
+    <label data-i18n="promo.seconds">СЕК</label>
+  </div>
+</div>
+
         <a href="#tours" class="btn" style="background: white; color: black; min-width: 200px;" data-i18n="buttons.book">Забронювати</a>
       </div>
 
