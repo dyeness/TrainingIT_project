@@ -1,49 +1,60 @@
-import { initCalculator, resetCalculator } from "./calculator.js";
+// js/modal.js
 
 export function initTourModal() {
-  const modal = document.getElementById("tour-modal");
-  const closeModal = document.querySelector(".close-modal");
-  const detailButtons = document.querySelectorAll(".tour-card .btn-outline");
+  const modal = document.getElementById('tour-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const closeBtns = document.querySelectorAll('.close-modal, .close-modal-btn');
 
-  const closeTourModal = () => {
-    modal?.classList.remove("active");
-    document.body.style.overflow = "auto";
+  let currentTourKey = null;
+
+  const toursData = {
+    card1: {
+      titleKey: 'tours.card1.title',
+      descKey: 'tours.card1.fullDesc'
+    },
+    card2: {
+      titleKey: 'tours.card2.title',
+      descKey: 'tours.card2.fullDesc'
+    }
   };
 
-  // Инициализируем калькулятор 1 раз
-  initCalculator();
-
-  detailButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+  document.querySelectorAll('.tour-card .btn').forEach((btn, index) => {
+    btn.addEventListener('click', e => {
       e.preventDefault();
-
-      resetCalculator();
-
-      const card = btn.closest(".tour-card");
-      const title = card?.querySelector("h3")?.innerText || "Тур";
-      const desc = card?.querySelector("p")?.innerText || "";
-
-      const titleEl = document.getElementById("modal-title");
-      const descEl = document.getElementById("modal-desc");
-
-      if (titleEl) titleEl.innerText = title;
-      if (descEl) {
-        descEl.innerText =
-          desc + " Відкрийте для себе красу Карпат з нашою ексклюзивною програмою.";
-      }
-
-      modal?.classList.add("active");
-      document.body.style.overflow = "hidden";
+      currentTourKey = index === 0 ? 'card1' : 'card2';
+      openModal(currentTourKey);
     });
   });
 
-  closeModal?.addEventListener("click", closeTourModal);
+  function openModal(tourKey) {
+    const tour = toursData[tourKey];
+    if (!tour) return;
 
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) closeTourModal();
+    modalTitle.textContent = i18n.t(tour.titleKey);
+    modalDesc.textContent = i18n.t(tour.descKey);
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', closeModal);
   });
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeTourModal();
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('languageChanged', () => {
+    if (!currentTourKey) return;
+    const tour = toursData[currentTourKey];
+    modalTitle.textContent = i18n.t(tour.titleKey);
+    modalDesc.textContent = i18n.t(tour.descKey);
   });
 }

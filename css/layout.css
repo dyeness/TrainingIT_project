@@ -71,6 +71,81 @@ section {
   border-bottom: 1px solid var(--border);
 }
 
+/* ===== i18n layout stability ===== */
+
+.hero h1 {
+  min-height: 2.6em;
+}
+
+.hero p {
+  min-height: 4.2em;
+}
+
+.label {
+  display: inline-block;
+  min-height: 1.2em;
+}
+
+#contact h2 {
+  min-height: 2.4em;
+}
+
+#contact p {
+  min-height: 3.6em;
+}
+
+.usp-item {
+  min-height: 220px;
+}
+
+.tour-card {
+  min-height: 420px;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* ===== i18n card stability ===== */
+
+.usp-item {
+  min-height: 260px;
+  display: flex;
+}
+
+.usp-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.usp-item p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+
+  overflow: hidden;
+}
+
+
+.tour-card {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-card p {
+  flex-grow: 1;
+}
+
+.usp-grid,
+.tour-grid {
+  grid-auto-rows: 1fr;
+}
+
+
 .label {
   color: var(--burnt-orange);
   text-transform: uppercase;

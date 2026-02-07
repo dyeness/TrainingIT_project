@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "service": "Service",
+    "tours": "Tours",
+    "reviews": "Reviews",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "label": "Premium service",
+    "title": "The great escape to the mountains.",
+    "subtitle": "We create journeys where the wild nature of the Carpathians meets flawless European comfort. Every route is your personal story of freedom.",
+
+    "usp1": {
+      "title": "Local guides",
+      "desc": "Hidden trails you won’t find on Google Maps.",
+      "hoverTitle": "Experienced guides",
+      "hoverDesc": "Our guides were born in the mountains and know every stone on the path."
+    },
+    "usp2": {
+      "title": "Privacy",
+      "desc": "Routes without crowds — only you and the peaks.",
+      "hoverTitle": "Your personal space",
+      "hoverDesc": "We choose paths where you won’t meet other tourist groups."
+    },
+    "usp3": {
+      "title": "Comfort",
+      "desc": "Relax in the best eco-chalets of the region.",
+      "hoverTitle": "Five stars in the mountains",
+      "hoverDesc": "Warm floors, panoramic windows and a hot tub after hiking."
+    }
+  },
+
+  "promo": {
+    "title": "Mountain weekend",
+    "text": "Book now and get -20%.",
+    "days": "DAYS",
+    "hours": "HRS",
+    "minutes": "MIN"
+  },
+
+  "weather": {
+    "pointsLabel": "Temperature points",
+    "modalLabel": "Mountain weather",
+    "modalTitle": "Go West locations",
+    "city": {
+      "yaremche": {
+        "name": "Yaremche",
+        "status": "Main base"
+      },
+      "bukovel": {
+        "name": "Bukovel",
+        "status": "Ski resort"
+      },
+      "dragobrat": {
+        "name": "Dragobrat",
+        "status": "Highest point"
+      }
+    }
+  },
+
+  "tours": {
+    "label": "Current offers",
+    "catalogTitle": "Tour catalog",
+
+    "card1": {
+      "title": "Chornohora Drive",
+      "desc": "3 days • Extreme ascent to alpine lakes.",
+      "fullDesc": "An intense route across Chornohora with alpine lakes, panoramas and adrenaline."
+    },
+    "card2": {
+      "title": "Zen in the Carpathians",
+      "desc": "5 days • Yoga and silence in a mountain chalet.",
+      "fullDesc": "A meditative retreat to restore balance of body and mind."
+    }
+  },
+
+  "badges": {
+    "bestSeller": "Best Seller",
+    "popular": "Popular"
+  },
+
+  "modal": {
+    "label": "Detailed program",
+    "peopleLabel": "Number of people",
+    "addonsLabel": "Additional services",
+
+    "addon": {
+      "equipment": "Equipment rental (+800 ₴)",
+      "insurance": "Extended insurance (+400 ₴)"
+    },
+
+    "pricing": {
+      "standard": {
+        "title": "Standard",
+        "li1": "Hostel accommodation",
+        "li2": "Group transfer"
+      },
+      "comfort": {
+        "title": "Comfort",
+        "li1": "Eco-chalet",
+        "li2": "Breakfasts and dinners"
+      },
+      "premium": {
+        "title": "Premium",
+        "li1": "VIP chalet",
+        "li2": "Full board + tastings"
+      }
+    }
+  },
+
+  "benefits": {
+    "label": "Why choose us",
+    "title": "Your benefits with Go West UA",
+
+    "b1": {
+      "title": "Safety first",
+      "desc": "Certified guides and modern GPS equipment.",
+      "hoverTitle": "Your peace of mind",
+      "hoverDesc": "Satellite communication and daily safety checks."
+    },
+    "b2": {
+      "title": "Flexibility",
+      "desc": "Free date changes in case of bad weather.",
+      "hoverTitle": "Adaptability",
+      "hoverDesc": "Route or date changes with no extra cost."
+    },
+    "b3": {
+      "title": "Premium service",
+      "desc": "Everything included — from transfer to equipment.",
+      "hoverTitle": "360° care",
+      "hoverDesc": "We handle every organizational detail."
+    }
+  },
+
+  "reviews": {
+    "label": "What clients say",
+    "title": "Your emotions are our goal",
+    "rating": "EXCELLENT",
+
+    "r1": { "text": "It was the best vacation.", "author": "— Oleksandr V., Kyiv" },
+    "r2": { "text": "The gastro tour was amazing.", "author": "— Maria K., Lviv" },
+    "r3": { "text": "Jeeping was pure adrenaline.", "author": "— Ihor P., Odesa" },
+    "r4": { "text": "The retreat brought inner peace.", "author": "— Tetiana L., Dnipro" },
+    "r5": { "text": "Professional guides.", "author": "— Maksym S., Kharkiv" },
+
+    "hint": "← Scroll to read more →"
+  },
+
+  "contact": {
+  "label": "Trusted by clients",
+  "title": "Take the first step to adventure",
+  "statTours": "Tours per season",
+  "statSafety": "Safety",
+  "text": "Leave a request for a personalized tour and we will contact you within 15 minutes."
+},
+
+"form": {
+  "submit": "Get tour selection"
+},
+
+
+
+  "buttons": {
+    "book": "Book now",
+    "details": "Details",
+    "choose": "Choose"
+  }
+}
