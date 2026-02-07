@@ -39,6 +39,14 @@
     "minutes": "MIN"
   },
 
+  "success": {
+  "label": "Done",
+  "title": "Request received",
+  "text": "Our manager will contact you shortly to arrange a personalized tour.",
+  "button": "Great"
+},
+
+
   "weather": {
     "pointsLabel": "Temperature points",
     "modalLabel": "Mountain weather",
