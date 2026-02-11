@@ -78,3 +78,61 @@ body[data-theme="light"] .btn:hover {
 body[data-theme="light"] .timer-item {
   background: rgba(255, 255, 255, 0.466);
 }
+
+/* ===== LIGHT THEME GLASS EFFECT ===== */
+
+body[data-theme="light"] .usp-item,
+body[data-theme="light"] .price-card,
+body[data-theme="light"] .tour-card,
+body[data-theme="light"] .promo-glass,
+body[data-theme="light"] .theme-btn,
+body[data-theme="light"] .lang-btn,
+body[data-theme="light"] .weather-compact,
+body[data-theme="light"] .modal-content-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4)) !important;
+  backdrop-filter: blur(20px);
+}
+
+body[data-theme="light"] .usp-item:hover,
+body[data-theme="light"] .price-card:hover,
+body[data-theme="light"] .tour-card:hover,
+body[data-theme="light"] .theme-btn:hover,
+body[data-theme="light"] .lang-btn:hover,
+body[data-theme="light"] .weather-compact:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5)) !important;
+}
+
+/* ===== LIGHT THEME HEADER ===== */
+
+body[data-theme="light"] header {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4)) !important;
+  backdrop-filter: blur(30px);
+}
+
+/* ===== LIGHT THEME FOOTER SOCIALS ===== */
+
+body[data-theme="light"] .social-link {
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] .social-link:hover {
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== LIGHT THEME LANGUAGE BUTTON ===== */
+
+body[data-theme="light"] .lang-btn.active {
+  color: #000;
+}
+
+/* ===== LIGHT THEME CURSOR ===== */
+
+body[data-theme="light"] .cursor-dot {
+  background-color: #000;
+}
+
+body[data-theme="light"] .cursor-dot.cursor-hover {
+  background-color: #000;
+}
