@@ -13,7 +13,7 @@ export function initCursor() {
 
     cursorOutline.animate(
       { left: `${posX}px`, top: `${posY}px` },
-      { duration: 400, fill: "forwards" }
+      { duration: 300, fill: "forwards" }
     );
   });
 
