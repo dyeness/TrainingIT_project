@@ -1,5 +1,7 @@
 let peopleCount = 1;
 
+let isInitialized = false;
+
 export function resetCalculator() {
   peopleCount = 1;
 
@@ -13,6 +15,9 @@ export function resetCalculator() {
 }
 
 export function initCalculator() {
+
+  if (isInitialized) return;
+  isInitialized = true;
   const peopleCountEl = document.getElementById("people-count");
   const plusBtn = document.querySelector(".count-btn.plus");
   const minusBtn = document.querySelector(".count-btn.minus");
