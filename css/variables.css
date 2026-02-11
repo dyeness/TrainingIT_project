@@ -14,12 +14,24 @@
   --font-body: 'Inter', sans-serif;
 }
 
+:root {
+  --gradient-dark-blue: rgba(0, 35, 102, 0.5);
+  --gradient-dark-grey: rgba(26, 28, 34, 0.8);
+  --gradient-overlay-dark: rgba(5, 7, 10, 0.8);
+  --gradient-map-light: rgba(0, 0, 0, 0.2);
+  --gradient-map-dark: rgba(0, 0, 0, 0.5);
+}
 
 body[data-theme="light"] {
-  --navy-dark: #fdfaf5;
-  --off-white: #1a1c22;
+  --navy-dark: #f3ede4;
+  --off-white: #2a2c32;
   --text-muted: rgba(26, 28, 34, 0.7);
-  --border: rgba(0,0,0,0.08);
-  --glass-bg: rgba(255,255,255,0.4);
-  --glass-heavy: rgba(255,255,255,0.7);
+  --border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(243, 237, 228, 0.5);
+  --glass-heavy: rgba(243, 237, 228, 0.8);
+  --gradient-dark-blue: rgba(200, 150, 100, 0.4);
+  --gradient-dark-grey: rgba(220, 210, 190, 0.6);
+  --gradient-overlay-dark: rgba(243, 237, 228, 0.7);
+  --gradient-map-light: rgba(0, 0, 0, 0.08);
+  --gradient-map-dark: rgba(0, 0, 0, 0.15);
 }

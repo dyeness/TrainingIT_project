@@ -72,10 +72,10 @@
   background: linear-gradient(
     to bottom,
     var(--navy-dark) 0%,
-    rgba(5, 7, 10, 0.8) 10%,
+    var(--gradient-overlay-dark) 10%,
     transparent 30%,
     transparent 70%,
-    rgba(5, 7, 10, 0.8) 90%,
+    var(--gradient-overlay-dark) 90%,
     var(--navy-dark) 100%
   );
   pointer-events: none;
