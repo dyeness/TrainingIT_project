@@ -18,11 +18,20 @@
 
 .hero p {
   max-width: 650px;
-  margin: 35px auto;
+  margin: 25px auto 0;
   font-size: 20px;
   color: var(--text-muted);
   font-weight: 300;
 }
+
+
+
+body[data-theme="light"] .hero p {
+  color: #0f0f0f;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
 
 /* ===== HERO PARALLAX BACKGROUND ===== */
 
@@ -103,6 +112,12 @@
   height: 100%;
   display: block;
 }
+
+/* украинский язык — текст чуть выше */
+body[data-lang="ua"] .hero p {
+  margin-top: 18px;
+}
+
 
 /* ===== RESPONSIVE ===== */
 

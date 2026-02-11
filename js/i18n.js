@@ -34,6 +34,8 @@ async function loadLang(lang) {
   localStorage.setItem("lang", lang);
   currentLang = lang;
 
+  document.body.setAttribute("data-lang", lang);
+
   // 🔥 КЛЮЧЕВОЕ СОБЫТИЕ
   document.dispatchEvent(new Event("languageChanged"));
 }
