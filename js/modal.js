@@ -1,5 +1,7 @@
 // js/modal.js
 
+import { initCalculator, resetCalculator } from "./calculator.js";
+
 export function initTourModal() {
   const modal = document.getElementById('tour-modal');
   const modalTitle = document.getElementById('modal-title');
@@ -36,6 +38,10 @@ export function initTourModal() {
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    resetCalculator();
+    initCalculator();
+
   }
 
   closeBtns.forEach(btn => {
