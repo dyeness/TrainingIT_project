@@ -4,26 +4,27 @@
   background: var(--glass-bg);
   border: 1px solid var(--border);
   border-radius: 50px;
-  padding: 5px 16px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
 
   width: fit-content;
   justify-self: center;
 
   backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .weather-compact:hover {
   background: var(--glass-heavy);
   border-color: var(--burnt-orange);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 102, 0, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.25);
 }
 
 /* ===== WEATHER MODAL ===== */
