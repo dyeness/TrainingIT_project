@@ -77,6 +77,10 @@ section {
   min-height: 2.6em;
 }
 
+body[data-lang="ua"] .hero h1 {
+  min-height: 1.6em;
+}
+
 .hero p {
   min-height: 4.2em;
 }
