@@ -167,6 +167,13 @@ h2 {
   line-height: 1.1;
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* расстояние между 🌙 и UA */
+}
+
+
 #tours .label,
 #benefits .label {
   text-align: center;
