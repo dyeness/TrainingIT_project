@@ -6,6 +6,8 @@ import { initCursor } from "./cursor.js";
 import { initScrollProgress } from "./scroll-progress.js";
 import { initReviewsSlider } from "./slider.js";
 import { initPromoTimer } from "./timer.js";
+import { initRequestsModal } from "./requests.js";
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initReviewsSlider();
   initPromoTimer();
+  initRequestsModal();
 });
 const form = document.querySelector("#contact form");
 const successModal = document.getElementById("success-modal");
@@ -27,13 +30,39 @@ if (form && successModal) {
   );
 
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    successModal.classList.add("active");
-    document.body.classList.add("modal-open");
+  // берём данные формы
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const phone = form.querySelector('input[type="tel"]').value.trim();
 
-    form.reset();
-  });
+  // собираем заявку
+  const request = {
+    id: Date.now(),
+    createdAt: new Date().toISOString(),
+    name,
+    phone,
+    booking: window.bookingState || {}
+  };
+
+  // берём уже сохранённые заявки
+  const existing = JSON.parse(localStorage.getItem("gw_requests") || "[]");
+
+  // добавляем новую
+  existing.push(request);
+
+  // сохраняем обратно
+  localStorage.setItem("gw_requests", JSON.stringify(existing));
+
+  // показываем success
+  successModal.classList.add("active");
+  document.body.classList.add("modal-open");
+
+  form.reset();
+  window.bookingState = {};
+
+});
+
 
   closeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -44,7 +73,8 @@ if (form && successModal) {
 
   successModal.addEventListener("click", (e) => {
     if (e.target === successModal) {
-      successModal.classList.remove("open");
+      successModal.classList.remove("active");
+
       document.body.classList.remove("modal-open");
     }
   });

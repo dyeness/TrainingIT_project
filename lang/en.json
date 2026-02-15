@@ -141,6 +141,29 @@
     }
   },
 
+  "confirm": {
+  "label": "Confirmation",
+  "clearTitle": "Delete all requests?",
+  "yes": "Yes, delete",
+  "no": "Cancel"
+}
+,
+
+"crm": {
+  "title": "Requests",
+  "open": "Orders",
+  "empty": "No requests yet",
+  "name": "Name",
+  "phone": "Phone",
+  "tour": "Tour",
+  "plan": "Plan",
+  "people": "People",
+  "addons": "Extras",
+  "delete": "Delete",
+  "clear": "Clear all"
+}
+,
+
   "reviews": {
     "label": "What clients say",
     "title": "Your emotions are our goal",
