@@ -39,7 +39,7 @@
         <div class="calculator-box">
           <div class="calc-row">
             <div class="calc-group">
-              <label data-i18n="modal.peopleLabel">Кількість осіб</label>
+              <label>Скільки осіб планує поїздку?</label>
               <div class="counter">
                 <button type="button" class="count-btn minus"><span style="font-size: 25px;">−</span></button>
                 <span id="people-count">1</span>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="calc-group">
-              <label data-i18n="modal.addonsLabel">Додаткові послуги</label>
+              <label>Що бажаєте додати?</label>
               <div class="options">
                 <label class="option-item">
                   <input type="checkbox" class="addon-check" data-price="800">
@@ -73,7 +73,7 @@
               <li data-i18n="modal.pricing.standard.li1">Проживання у хостелі</li>
               <li data-i18n="modal.pricing.standard.li2">Груповий трансфер</li>
             </ul>
-            <a href="#contact" class="btn btn-outline close-modal-btn" style="width: 100%;" data-i18n="buttons.choose">Обрати</a>
+            <button type="button" class="btn btn-outline select-plan" style="width:100%;">Обрати формат</button>
           </div>
 
           <div class="price-card featured" data-base="8200">
@@ -84,7 +84,7 @@
               <li data-i18n="modal.pricing.comfort.li1">Еко-шале</li>
               <li data-i18n="modal.pricing.comfort.li2">Сніданки та вечері</li>
             </ul>
-            <a href="#contact" class="btn close-modal-btn" style="width: 100%;" data-i18n="buttons.choose">Обрати</a>
+            <button type="button" class="btn btn-outline select-plan" style="width:100%;">Обрати формат</button>
           </div>
 
           <div class="price-card" data-base="15000">
@@ -94,9 +94,17 @@
               <li data-i18n="modal.pricing.premium.li1">VIP-шале</li>
               <li data-i18n="modal.pricing.premium.li2">Full Board + Дегустації</li>
             </ul>
-            <a href="#contact" class="btn btn-outline close-modal-btn" style="width: 100%;" data-i18n="buttons.choose">Обрати</a>
+            <button type="button" class="btn btn-outline select-plan" style="width:100%;">Обрати формат</button>
           </div>
+
+          
         </div>
+
+        <div class="modal-cta">
+            <button id="continue-booking" class="btn modal-cta-btn">
+              Залишити запит
+            </button>
+          </div>
 
       </div>
     </div>
@@ -531,6 +539,14 @@
         </div>
 
         <form>
+          <div id="selected-tour-summary"
+     style="display:none;
+            margin-bottom:25px;
+            padding:20px;
+            border:1px solid var(--border);
+            border-radius:16px;">
+</div>
+
           <input type="text" data-i18n-placeholder="form.name" placeholder="Ваше ім'я" required>
           <input type="tel" data-i18n-placeholder="form.phone" placeholder="+380 (__) ___ __ __" required>
           <button type="submit" class="btn" style="width: 100%;" data-i18n="form.submit" data-i18n="form.submit">Отримати підбір туру</button>
