@@ -79,3 +79,24 @@
   text-shadow: 0 0 15px var(--orange-glow);
 }
 
+/* ===== MODAL FINAL CTA ===== */
+
+.modal-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.modal-cta-btn {
+  padding: 22px 70px;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.price-card.selected-plan {
+  border-color: var(--burnt-orange);
+  box-shadow: 0 0 25px var(--orange-glow);
+  transform: scale(1.02);
+}
+
